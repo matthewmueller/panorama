@@ -1132,7 +1132,7 @@ Socket.prototype.ping = function () {
 
 /**
  * Called on `drain` event
- * 
+ *
  * @api private
  */
 
@@ -1153,7 +1153,7 @@ Socket.prototype.ping = function () {
 
 /**
  * Calls all the callback functions associated with sending packets
- * 
+ *
  * @api private
  */
 
@@ -3295,7 +3295,7 @@ window.ondeviceorientation = function(e) {
   calibrated = (calibrated + 360) % 360;
 
   if(angle) {
-    el.innerHTML = (calibrated | 0) + '°';
+    el.innerHTML = (calibrated | 0) + '&deg;';
     transform(calibrated);
   }
 
@@ -3308,7 +3308,7 @@ window.ondeviceorientation = function(e) {
 
 socket.on('angle', function(a) {
   a = a | 0;
-  el.innerHTML = a + '°';
+  el.innerHTML = a + '&deg;';
   transform(a);
 });
 
