@@ -1,0 +1,15 @@
+.degrees {
+  text-align: center;
+  margin-top: 50px;
+  font-size: 72px;
+}
+
+.iphone {
+  background-image: url('/images/iphone.jpg');
+  background-size: contain;
+  width: 260px;
+  height: 506px;
+  margin-left: -130px;
+  margin-top: 40px;
+  position: relative;
+}
