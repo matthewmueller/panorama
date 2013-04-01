@@ -5,7 +5,7 @@
 }
 
 .iphone {
-  background-image: url('/images/iphone.jpg');
+  background-image: url('images/iphone.jpg');
   background-size: contain;
   width: 260px;
   height: 506px;
