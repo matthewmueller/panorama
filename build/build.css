@@ -9,6 +9,7 @@
   background-size: contain;
   width: 260px;
   height: 506px;
+  margin-left: -130px;
   margin-top: 40px;
   position: relative;
 }

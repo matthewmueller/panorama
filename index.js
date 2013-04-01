@@ -30,23 +30,25 @@ window.ondeviceorientation = function(e) {
 
   if(angle) {
     el.innerHTML = (calibrated | 0) + '°';
-    transform(iphone, calibrated);
-    // rotate(iphone, calibrated);
-    // translate(iphone, calibrated);
-    // scale(iphone, calibrated);
+    transform(calibrated);
   }
+
   socket.emit('angle', calibrated);
 };
 
 /**
- * on angle
+ * Listen for angle events
  */
 
 socket.on('angle', function(a) {
   a = a | 0;
   el.innerHTML = a + '°';
-  transform(iphone, a);
+  transform(a);
 });
+
+/**
+ * Reset when you touch the phone
+ */
 
 document.ontouchend = function(e) {
   offset = angle;
@@ -54,26 +56,22 @@ document.ontouchend = function(e) {
   iphone.style['left'] = '0px';
 }
 
-
 /**
  * Transform
  */
 
-function transform(el, a) {
+function transform(a) {
   out = [];
 
-  // rotate
-  out.push('rotateY(' + a + 'deg)');
-
-  // translate (% -> pixel)
-  var t = ((a + 90) % 360) / 180,
-      width = (el.parentNode.clientWidth * t) | 0;
-  el.style['left'] = width + 'px';
-
+  // scale
   var s = a;
   if(a > 180) s = 360 - a;
   s = (s / 180) + .5;
 
-  out.push('scale(' + s + ')');
-  el.style['-webkit-transform'] = out.join(' ');
+  // translate
+  var t = ((a + 90) % 360) / 180;
+  t = (t * 100) | 0;
+
+  iphone.style['-webkit-transform'] = 'rotateY(' + a + 'deg) scale(' + s + ')';
+  iphone.style['left'] = t + '%';
 };
